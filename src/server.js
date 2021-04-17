@@ -1,7 +1,13 @@
 'use strict';
 const express = require('express');
+const path = require('path')
+
 const app = express();
 const registerRoutes = require('./routes');
+
+// configure the server so it serves the static assets from the public folder
+const publicPath = path.join(__dirname, '../public');
+app.use('/', express.static(publicPath));
 
 // server config
 const port = process.env.PORT || 3000;
